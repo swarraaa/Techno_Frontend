@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Signupform.module.css'
+import './Signupform.css'
 
 const Signupform = () => {
   // React States 
