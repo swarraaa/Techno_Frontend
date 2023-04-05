@@ -8,13 +8,11 @@ const Blog_f = () => {
                 <div className="title">Add Blog</div>
                 <form id="wlug">
                     <div className="input-container">
-                        <label>Title</label>
-                        <input type="text" />
+                        <input type="text" placeholder="Title"/>
                     </div>
-                </form>
                 <div className="input-container">
-                    <textarea className="description">Description</textarea>
-                    <textarea className="content">Content</textarea>
+                    <textarea className="description" placeholder="Description"></textarea>
+                    <textarea className="content" placeholder="Content"></textarea>
                     <form>
                         <div className="input-container">
                             <label>Image</label>
@@ -25,6 +23,7 @@ const Blog_f = () => {
                         </div>
                     </form>
                 </div>
+                </form>
             </div>
         </div >
     );
