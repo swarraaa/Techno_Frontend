@@ -47,15 +47,21 @@ button[typeof="submit"]:hover {
   background: #01d28e;
 }
 
-input[type="text"],
-input[type="textview"]{
+.input-container input[type="text"],
+.input-container input[type="textview"] {
   height: 25px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  padding: 0.8em !important;
 }
 
-.description,.content 
-{
+input[type="textview"] {
+  padding: 0.5em;
+}
+
+.description,
+.content {
+  padding: 0.5em;
   width: 310px;
   height: 85px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -77,14 +83,14 @@ input[type="submit"]:hover {
   background: #01d28e;
 }
 
-.text-container{
+.text-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin: 10px;
 }
 
-.final-container{
+.final-container {
   display: flex;
   justify-content: center;
   align-items: center;

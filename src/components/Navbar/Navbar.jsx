@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './Navbar.module.css'
-import { NavLink } from 'react-router-dom'
+import React from "react";
+import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,12 +8,28 @@ const Navbar = () => {
       <div className={styles.innerNav}>
         <div className={styles.logo}>Blogs</div>
         <div className={styles.navigations}>
-          <NavLink to='/'>Blogs</NavLink>
-          <NavLink to='/signup'>Sign up</NavLink>
+          <NavLink
+            className={(navData) => (navData.isActive ? styles.active : "")}
+            to="/"
+          >
+            Blogs
+          </NavLink>
+          <NavLink
+            className={(navData) => (navData.isActive ? styles.active : "")}
+            to="/blogform"
+          >
+            AddBlog
+          </NavLink>
+          <NavLink
+            className={(navData) => (navData.isActive ? styles.active : "")}
+            to="/signup"
+          >
+            Sign up
+          </NavLink>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
