@@ -1,49 +1,39 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./Signupform.module.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signupform = () => {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const history = useNavigate();
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1",
-    },
-    {
-      username: "user2",
-      password: "pass2",
-    },
-  ];
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
 
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
-
-  const handleSubmit = (event) => {
-    //Prevent page reload
-    event.preventDefault();
-
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "harsh", message: errors.uname });
-    }
+  const handleSubmit = async () => {
+    // console.log(username.current.value);
+    await axios
+      .post(
+        "https://techno-backend.vercel.app/user/signup",
+        {
+          username: username.current.value,
+          emailId: email.current.value,
+          password: password.current.value,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        localStorage.setItem("_id", res.data.user._id);
+        localStorage.setItem("username", res.data.user.username);
+        history("/");
+      });
   };
 
   // Generate JSX code for error message
@@ -55,21 +45,26 @@ const Signupform = () => {
   // JSX code for login form
   const renderForm = (
     <div className={styles.form}>
-      <form onSubmit={handleSubmit}>
+      <div onSubmit={(event) => event.preventDefault()}>
         <div className={styles.inputContainer}>
           <label>Username </label>
-          <input type="text" name="uname" required />
+          <input ref={username} type="text" name="uname" required />
+          {renderErrorMessage("harsh")}
+        </div>
+        <div className={styles.inputContainer}>
+          <label>Email </label>
+          <input ref={email} type="email" name="email" required />
           {renderErrorMessage("harsh")}
         </div>
         <div className={styles.inputContainer}>
           <label>Password </label>
-          <input type="password" name="pass" required />
+          <input ref={password} type="password" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
         <div className={styles.buttonContainer}>
-          <input type="submit" />
+          <button onClick={handleSubmit}>Submit</button>
         </div>
-      </form>
+      </div>
     </div>
   );
 

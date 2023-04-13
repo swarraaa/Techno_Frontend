@@ -1,20 +1,34 @@
-import React from 'react'
-import BlogCard from '../BlogCard/BlogCard'
-import styles from './Blogs.module.css'
+import React, { useEffect, useState } from "react";
+import BlogCard from "../BlogCard/BlogCard";
+import styles from "./Blogs.module.css";
+import axios from "axios";
 
 const Blogs = () => {
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    const getBlogs = async () => {
+      await axios
+        .get("https://techno-backend.vercel.app/blog/")
+        .then((res) => setBlogs(res.data.blog));
+    };
+    getBlogs();
+  }, []);
   return (
     <div className={styles.Blogs}>
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
+      {blogs.map((item) => (
+        <BlogCard
+          key={item._id}
+          _id={item._id}
+          title={item.title}
+          image={item.image}
+          description={item.description}
+          date={item.date}
+          content={item.content}
+          author={item.author}
+        />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Blogs
+export default Blogs;

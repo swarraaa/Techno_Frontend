@@ -7,14 +7,22 @@ import { Link } from "react-router-dom";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import styles from "./BlogCard.module.css";
 
-export default function MultiActionAreaCard() {
+export default function MultiActionAreaCard({
+  _id,
+  title,
+  image,
+  author,
+  date,
+  description,
+  content,
+}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGFuaW1hbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          image={image}
           alt="green iguana"
         />
         <CardContent>
@@ -24,22 +32,19 @@ export default function MultiActionAreaCard() {
             component="div"
             className={styles.BlogCard_Heading}
           >
-            A hamster is found stealing the food from the plate, reporters are
-            saying he might have to spend 1 hour inside the cage
+            {title}
           </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
             className={styles.BlogCard_para}
           >
-            You don't have to read this paragraph cz it doesn't contain any
-            useful information you are just wasting your precious time, leave it
-            and get a life
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to="/Detail/12345">
+        <Link to={`/Detail/${_id}`}>
           <Button size="small" color="primary">
             Read More
           </Button>
