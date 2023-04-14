@@ -8,7 +8,7 @@ const Blogs = () => {
   useEffect(() => {
     const getBlogs = async () => {
       await axios
-        .get("https://techno-backend.vercel.app/blog/")
+        .get("http://localhost:8000/blog/")
         .then((res) => setBlogs(res.data.blog));
     };
     getBlogs();

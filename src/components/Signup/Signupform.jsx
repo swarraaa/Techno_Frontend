@@ -17,7 +17,7 @@ const Signupform = () => {
     // console.log(username.current.value);
     await axios
       .post(
-        "https://techno-backend.vercel.app/user/signup",
+        "http://localhost:8000/user/signup",
         {
           username: username.current.value,
           emailId: email.current.value,

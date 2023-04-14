@@ -8,7 +8,7 @@ const Comments = ({ _id, comments = [] }) => {
   const AddComment = async () => {
     await axios
       .post(
-        "https://techno-backend.vercel.app/blog/addComment",
+        "http://localhost:8000/blog/addComment",
         {
           _id: _id,
           name: username,

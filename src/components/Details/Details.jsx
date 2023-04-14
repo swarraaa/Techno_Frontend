@@ -13,7 +13,7 @@ const Details = () => {
   useEffect(() => {
     const getSingleBlog = async () => {
       await axios
-        .get(`https://techno-backend.vercel.app/blog/getBlog/${id}`)
+        .get(`http://localhost:8000/blog/getBlog/${id}`)
         .then((res) => setDetail(res.data.blog));
     };
     getSingleBlog();
@@ -22,7 +22,7 @@ const Details = () => {
   const DeleteBlog = async () => {
     await axios
       .post(
-        "https://techno-backend.vercel.app/blog/deleteBlog",
+        "http://localhost:8000/blog/deleteBlog",
         { _id: id },
         {
           headers: {

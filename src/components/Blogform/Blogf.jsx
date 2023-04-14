@@ -18,7 +18,7 @@ const Blog_f = () => {
       .then(async (res) => {
         await axios
           .post(
-            "https://techno-backend.vercel.app/blog/createBlog",
+            "http://localhost:8000/blog/createBlog",
             {
               title: title.current.value,
               author: id,
