@@ -15,7 +15,7 @@ function App() {
         <Route exact path='/signup' element={<Signupform />} />
         <Route exact path='/blogform' element={<Blogf />} />
         <Route exact path='/' element={<Blogs />} />
-        <Route exact path='//Detail/:id' element={<Details />} />
+        <Route exact path='/Detail/:id' element={<Details />} />
       </Routes>
     </Layout>
   )

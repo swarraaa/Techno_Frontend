@@ -34,6 +34,17 @@
 .Description {
   color: grey;
   margin: 0.5em 0 2em 0;
+  overflow-wrap: anywhere;
+}
+
+.Description {
+  color: grey;
+  margin: 0.5em 0 2em 0;
+  overflow-wrap: anywhere;
+}
+
+.InfoContainer {
+  overflow-wrap: anywhere;
 }
 
 .Details_FirstContainer {
@@ -44,4 +55,8 @@
 .ImageContainer {
   flex: 0.5;
   margin: 0.5em;
+}
+
+.ImageContainer {
+  max-height: 20em;
 }
