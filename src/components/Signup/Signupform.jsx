@@ -17,7 +17,7 @@ const Signupform = () => {
     // console.log(username.current.value);
     await axios
       .post(
-        "http://localhost:8000/user/signup",
+        "https://backendtechno.onrender.com/user/signup",
         {
           username: username.current.value,
           emailId: email.current.value,
