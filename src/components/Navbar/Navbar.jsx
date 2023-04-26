@@ -72,7 +72,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Tech Tips
+        TechnoBlogs
       </Typography>
       <Divider />
       <List>
@@ -117,7 +117,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Tech Tips
+            TechnoBlogs
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Link
@@ -161,6 +161,9 @@ function DrawerAppBar(props) {
                 Sign Up
               </Link>
             ) : (
+              ""
+            )}
+            {/* ) : (
               <button
                 onClick={() => {
                   localStorage.removeItem("_id");
@@ -170,7 +173,7 @@ function DrawerAppBar(props) {
               >
                 Logout
               </button>
-            )}
+            )} */}
           </Box>
         </Toolbar>
       </AppBar>

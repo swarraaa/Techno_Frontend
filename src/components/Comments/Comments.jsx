@@ -8,7 +8,7 @@ const Comments = ({ _id, comments = [] }) => {
   const AddComment = async () => {
     await axios
       .post(
-        "http://localhost:8000/blog/addComment",
+        "https://backendtechno.onrender.com/blog/addComment",
         {
           _id: _id,
           name: username,

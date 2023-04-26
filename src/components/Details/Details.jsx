@@ -13,7 +13,7 @@ const Details = () => {
   useEffect(() => {
     const getSingleBlog = async () => {
       await axios
-        .get(`http://localhost:8000/blog/getBlog/${id}`)
+        .get(`https://backendtechno.onrender.com/blog/getBlog/${id}`)
         .then((res) => setDetail(res.data.blog));
     };
     getSingleBlog();
@@ -22,7 +22,7 @@ const Details = () => {
   const DeleteBlog = async () => {
     await axios
       .post(
-        "http://localhost:8000/blog/deleteBlog",
+        "https://backendtechno.onrender.com/blog/deleteBlog",
         { _id: id },
         {
           headers: {
@@ -49,7 +49,10 @@ const Details = () => {
               <p className={styles.Description}>{detail.description}</p>
             </div>
             <div className={styles.ImageContainer}>
-              <img src={detail.image} alt="adfadf" />
+              <img
+                src={`https://backendtechno.onrender.com/images/${detail.image}`}
+                alt="adfadf"
+              />
             </div>
           </div>
           <div className={styles.InfoContainer}>

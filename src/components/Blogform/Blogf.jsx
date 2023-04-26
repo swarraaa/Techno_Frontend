@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "./Blogf.css";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Blog_f = () => {
   const title = useRef();
@@ -9,30 +10,23 @@ const Blog_f = () => {
   const [file, setFile] = useState(undefined);
   const id = localStorage.getItem("_id");
 
+  const location = useNavigate();
+
   async function submitHandler() {
     let data = new FormData();
+    data.append("title", title.current.value);
+    data.append("author", id);
+    data.append("description", Description.current.value);
+    data.append("content", Content.current.value);
     data.append("file", file);
-    data.append("upload_preset", "gmcn2mfb");
     await axios
-      .post("https://api.cloudinary.com/v1_1/dcglxmssd/image/upload", data)
-      .then(async (res) => {
-        await axios
-          .post(
-            "http://localhost:8000/blog/createBlog",
-            {
-              title: title.current.value,
-              author: id,
-              description: Description.current.value,
-              content: Content.current.value,
-              image: res.data.url,
-            },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          )
-          .then((res) => console.log(res));
+      .post("https://backendtechno.onrender.com/blog/createBlog", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        location("/");
       });
   }
 

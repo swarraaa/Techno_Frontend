@@ -22,7 +22,7 @@ export default function MultiActionAreaCard({
         <CardMedia
           component="img"
           height="140"
-          image={image}
+          image={`https://backendtechno.onrender.com/images/${image}`}
           alt="green iguana"
         />
         <CardContent>
