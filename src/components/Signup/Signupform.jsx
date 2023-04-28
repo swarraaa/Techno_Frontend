@@ -13,7 +13,8 @@ const Signupform = () => {
   const email = useRef();
   const password = useRef();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     // console.log(username.current.value);
     await axios
       .post(
@@ -36,44 +37,18 @@ const Signupform = () => {
       });
   };
 
-  // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className={styles.error}>{errorMessages.message}</div>
-    );
-
-  // JSX code for login form
-  const renderForm = (
-    <div className={styles.form}>
-      <div onSubmit={(event) => event.preventDefault()}>
-        <div className={styles.inputContainer}>
-          <label>Username </label>
-          <input ref={username} type="text" name="uname" required />
-          {renderErrorMessage("harsh")}
-        </div>
-        <div className={styles.inputContainer}>
-          <label>Email </label>
-          <input ref={email} type="email" name="email" required />
-          {renderErrorMessage("harsh")}
-        </div>
-        <div className={styles.inputContainer}>
-          <label>Password </label>
-          <input ref={password} type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className={styles.buttonContainer}>
-          <button onClick={handleSubmit}>Submit</button>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <div className={styles.app}>
-      <div className={styles.loginForm}>
-        <div className={styles.title}>Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-      </div>
+    <div className={styles.signup}>
+      <form>
+        <h2>Sign Up</h2>
+        <label htmlFor="name">Username</label>
+        <input ref={username} type="text" id="name" />
+        <label htmlFor="email">Email</label>
+        <input ref={email} type="email" id="email" />
+        <label htmlFor="pass">Password</label>
+        <input ref={password} type="password" id="pass" />
+        <button onClick={handleSubmit}>Sign Up</button>
+      </form>
     </div>
   );
 };

@@ -1,26 +1,23 @@
 import React, { useRef } from "react";
 import classes from "./Comments.module.css";
 import axios from "axios";
-const Comments = ({ _id, comments = [] }) => {
+const Comments = ({ _id, name, comments = [] }) => {
   const comment = useRef();
   const username = localStorage.getItem("username");
 
   const AddComment = async () => {
+    const data = {
+      _id: _id,
+      name: name,
+      date: Date.now,
+      text: comment.current.value,
+    };
     await axios
-      .post(
-        "https://backendtechno.onrender.com/blog/addComment",
-        {
-          _id: _id,
-          name: username,
-          date: Date.now,
-          text: comment.current.value,
+      .post("https://backendtechno.onrender.com/blog/addComment", data, {
+        headers: {
+          "Content-Type": "application/json",
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      })
       .then((res) => {
         window.location.reload();
       });
